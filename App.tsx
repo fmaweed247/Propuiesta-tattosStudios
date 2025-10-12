@@ -75,9 +75,10 @@ const App: React.FC = () => {
         {/* Hero Section */}
         <section className="relative py-20 sm:py-32 text-center">
             <div className="absolute inset-0 bg-gray-900/80 backdrop-blur-sm"></div>
+            {/* --- IMAGEN DE FONDO MODIFICADA AQUÍ --- */}
             <div 
                 className="absolute inset-0 bg-no-repeat bg-center bg-cover"
-                style={{backgroundImage: 'url(https://images.unsplash.com/photo-1554050857-c84a8abdb5e2?q=80&w=1974&auto=format&fit=crop)', opacity: '0.2'}}'}}
+                style={{backgroundImage: 'url(https://images.unsplash.com/photo-1593123502649-55361b183a0a?q=80&w=1974&auto=format&fit=crop)', opacity: '0.15'}}
             ></div>
             <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
                 <h1 className="text-4xl font-extrabold tracking-tight text-white sm:text-5xl md:text-6xl">
@@ -302,7 +303,6 @@ const App: React.FC = () => {
                         <h3 className="font-semibold text-white">¿Funciona con Instagram?</h3>
                         <p className="mt-2 text-gray-400">Sí. Pones el link en tu bio, stories o envías por DM.</p>
                     </div>
-                    {/* --- PREGUNTA MODIFICADA --- */}
                     <div className="bg-gray-800 p-6 rounded-lg border border-gray-700">
                         <h3 className="font-semibold text-white">¿Puedo cambiar las preguntas del formulario después?</h3>
                         <p className="mt-2 text-gray-400">Sí, por supuesto. Para garantizar que el sistema siga funcionando, solo tienes que solicitar los cambios y se aplicarán sin coste adicional como parte del mantenimiento mensual incluido.</p>
