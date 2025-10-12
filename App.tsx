@@ -75,11 +75,11 @@ const App: React.FC = () => {
         {/* Hero Section */}
         <section className="relative py-20 sm:py-32 text-center">
             <div className="absolute inset-0 bg-gray-900/80 backdrop-blur-sm"></div>
-            {/* --- LÍNEA CORREGIDA --- */}
+            {/* --- IMAGEN DE FONDO MODIFICADA --- */}
             <div 
                 className="absolute inset-0 bg-no-repeat bg-center bg-cover"
                 style={{
-                  backgroundImage: `url('https://images.unsplash.com/photo-1593123502649-55361b183a0a?q=80&w=1974&auto=format&fit=crop')`, 
+                  backgroundImage: `url('/hombre-haciendo-un-tatuaje-en-un-salon-de-tatuajes.jpg')`, 
                   opacity: '0.15'
                 }}
             ></div>
