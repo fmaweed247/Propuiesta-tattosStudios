@@ -1,6 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-// --- Helper Components (Defined outside the main App component) ---
+// Importa la librería y sus estilos
+import Lightbox from "yet-another-react-lightbox";
+import Zoom from "yet-another-react-lightbox/plugins/zoom";
+import "yet-another-react-lightbox/styles.css";
+
+// --- Helper Components (Definidos fuera del componente principal de la App) ---
 
 interface CheckListItemProps {
   children: React.ReactNode;
@@ -16,7 +21,6 @@ const CheckListItem: React.FC<CheckListItemProps> = ({ children }) => (
 );
 
 interface FeatureCardProps {
-  // Fix: Replaced JSX.Element with React.ReactElement to resolve "Cannot find namespace 'JSX'" error.
   icon: React.ReactElement;
   title: string;
   description: string;
@@ -32,9 +36,29 @@ const FeatureCard: React.FC<FeatureCardProps> = ({ icon, title, description }) =
   </div>
 );
 
-// --- Main App Component ---
+// --- Componente principal de la App ---
 
 const App: React.FC = () => {
+  // Estado para gestionar qué imagen está abierta en el Lightbox
+  const [open, setOpen] = useState(false);
+  const [imageSrc, setImageSrc] = useState("");
+
+  const openLightbox = (src: string) => {
+    setImageSrc(src);
+    setOpen(true);
+  };
+
+  // Lista de todas las imágenes que se podrán ampliar para el Lightbox
+  const slides = [
+    { src: "/form-screenshot.png" },
+    { src: "/email-cliente.png" },
+    { src: "/email-equipo-con-imagen.png" },
+    { src: "/email-equipo-sin-imagen.png" },
+    { src: "/sheets-leads.png" },
+    { src: "/sheets-metrics.png" },
+    { src: "/drive-screenshot.png" },
+  ];
+
   return (
     <div className="bg-gray-900 antialiased">
       <main>
@@ -156,7 +180,12 @@ const App: React.FC = () => {
                                     <div className="w-3 h-3 rounded-full bg-green-500"></div>
                                 </div>
                             </div>
-                            <img src="/form-screenshot.png" alt="Formulario web para tatuajes" className="rounded-b-lg w-full" />
+                            <img 
+                                src="/form-screenshot.png" 
+                                alt="Formulario web para tatuajes" 
+                                className="rounded-b-lg w-full cursor-pointer hover:opacity-80 transition-opacity" 
+                                onClick={() => openLightbox("/form-screenshot.png")}
+                            />
                         </div>
                         <div>
                             <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-cyan-900/50 text-cyan-300 ring-1 ring-inset ring-cyan-300/20">Paso 1</span>
@@ -177,7 +206,12 @@ const App: React.FC = () => {
                                     <div className="w-3 h-3 rounded-full bg-gray-200"></div>
                                 </div>
                             </div>
-                            <img src="/email-cliente.png" alt="Email de confirmación instantáneo" className="rounded-b-lg w-full" />
+                            <img 
+                                src="/email-cliente.png" 
+                                alt="Email de confirmación instantáneo" 
+                                className="rounded-b-lg w-full cursor-pointer hover:opacity-80 transition-opacity" 
+                                onClick={() => openLightbox("/email-cliente.png")}
+                            />
                         </div>
                         <div className="lg:order-1">
                             <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-cyan-900/50 text-cyan-300 ring-1 ring-inset ring-cyan-300/20">Paso 2</span>
@@ -192,8 +226,18 @@ const App: React.FC = () => {
                      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                         <div className="bg-gray-800 p-4 rounded-xl shadow-2xl shadow-cyan-500/10 border border-gray-700">
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                <img src="/email-equipo-con-imagen.png" alt="Notificación con imagen de referencia" className="rounded-lg w-full border border-gray-700" />
-                                <img src="/email-equipo-sin-imagen.png" alt="Notificación sin imagen de referencia" className="rounded-lg w-full border border-gray-700" />
+                                <img 
+                                    src="/email-equipo-con-imagen.png" 
+                                    alt="Notificación con imagen de referencia" 
+                                    className="rounded-lg w-full border border-gray-700 cursor-pointer hover:opacity-80 transition-opacity"
+                                    onClick={() => openLightbox("/email-equipo-con-imagen.png")}
+                                />
+                                <img 
+                                    src="/email-equipo-sin-imagen.png" 
+                                    alt="Notificación sin imagen de referencia" 
+                                    className="rounded-lg w-full border border-gray-700 cursor-pointer hover:opacity-80 transition-opacity"
+                                    onClick={() => openLightbox("/email-equipo-sin-imagen.png")}
+                                />
                             </div>
                         </div>
                         <div>
@@ -209,10 +253,25 @@ const App: React.FC = () => {
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                         <div className="lg:order-2 bg-gray-800 p-4 rounded-xl shadow-2xl shadow-cyan-500/10 border border-gray-700">
                              <div className="grid grid-cols-1 gap-4">
-                                <img src="/sheets-leads.png" alt="Google Sheets Leads" className="rounded-lg w-full border border-gray-700" />
+                                <img 
+                                    src="/sheets-leads.png" 
+                                    alt="Google Sheets Leads" 
+                                    className="rounded-lg w-full border border-gray-700 cursor-pointer hover:opacity-80 transition-opacity"
+                                    onClick={() => openLightbox("/sheets-leads.png")}
+                                />
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                    <img src="/sheets-metrics.png" alt="Google Sheets Metrics" className="rounded-lg w-full border border-gray-700" />
-                                    <img src="/drive-screenshot.png" alt="Google Drive Archive" className="rounded-lg w-full border border-gray-700" />
+                                    <img 
+                                        src="/sheets-metrics.png" 
+                                        alt="Google Sheets Metrics" 
+                                        className="rounded-lg w-full border border-gray-700 cursor-pointer hover:opacity-80 transition-opacity"
+                                        onClick={() => openLightbox("/sheets-metrics.png")}
+                                    />
+                                    <img 
+                                        src="/drive-screenshot.png" 
+                                        alt="Google Drive Archive" 
+                                        className="rounded-lg w-full border border-gray-700 cursor-pointer hover:opacity-80 transition-opacity"
+                                        onClick={() => openLightbox("/drive-screenshot.png")}
+                                    />
                                 </div>
                             </div>
                         </div>
@@ -335,6 +394,15 @@ const App: React.FC = () => {
             </div>
         </footer>
       </main>
+
+      {/* Componente Lightbox que se renderiza aquí */}
+      <Lightbox
+        open={open}
+        close={() => setOpen(false)}
+        slides={slides}
+        plugins={[Zoom]}
+        index={slides.findIndex(slide => slide.src === imageSrc)}
+      />
     </div>
   );
 };
