@@ -5,7 +5,7 @@ import Lightbox from "yet-another-react-lightbox";
 import Zoom from "yet-another-react-lightbox/plugins/zoom";
 import "yet-another-react-lightbox/styles.css";
 
-// --- Helper Components (Definidos fuera del componente principal de la App) ---
+// --- Helper Components ---
 
 interface CheckListItemProps {
   children: React.ReactNode;
@@ -20,377 +20,280 @@ const CheckListItem: React.FC<CheckListItemProps> = ({ children }) => (
   </li>
 );
 
-interface FeatureCardProps {
-  icon: React.ReactElement;
+interface ImageCardProps {
+  src: string;
   title: string;
-  description: string;
+  onClick: () => void;
 }
 
-const FeatureCard: React.FC<FeatureCardProps> = ({ icon, title, description }) => (
-  <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 transform hover:scale-105 transition-transform duration-300">
-    <div className="flex items-center justify-center h-12 w-12 rounded-md bg-cyan-500 text-white mb-4">
-      {icon}
+const ImageCard: React.FC<ImageCardProps> = ({ src, title, onClick }) => (
+    <div className="bg-gray-800 border border-gray-700 rounded-lg overflow-hidden group">
+        <img 
+            src={src} 
+            alt={title} 
+            className="w-full cursor-pointer group-hover:opacity-80 transition-opacity" 
+            onClick={onClick}
+        />
+        <div className="p-3 bg-gray-900">
+            <p className="text-sm text-center text-gray-400 font-medium">{title}</p>
+        </div>
     </div>
-    <h3 className="text-lg font-medium tracking-tight text-white">{title}</h3>
-    <p className="mt-2 text-base text-gray-400">{description}</p>
-  </div>
 );
+
 
 // --- Componente principal de la App ---
 
 const App: React.FC = () => {
-  // Estado para gestionar qué imagen está abierta en el Lightbox
-  const [open, setOpen] = useState(false);
-  const [imageSrc, setImageSrc] = useState("");
+    // Estado para gestionar qué imagen está abierta en el Lightbox
+    const [open, setOpen] = useState(false);
+    const [imageIndex, setImageIndex] = useState(0);
 
-  const openLightbox = (src: string) => {
-    setImageSrc(src);
-    setOpen(true);
-  };
+    const openLightbox = (index: number) => {
+        setImageIndex(index);
+        setOpen(true);
+    };
 
-  // Lista de todas las imágenes que se podrán ampliar para el Lightbox
-  const slides = [
-    { src: "/form-screenshot.png" },
-    { src: "/email-cliente.png" },
-    { src: "/email-equipo-con-imagen.png" },
-    { src: "/email-equipo-sin-imagen.png" },
-    { src: "/sheets-leads.png" },
-    { src: "/sheets-metrics.png" },
-    { src: "/drive-screenshot.png" },
-  ];
+    const images = [
+        { src: "/form-screenshot.png", title: "Tu formulario personalizado - Fácil de rellenar para el cliente" },
+        { src: "/email-cliente.png", title: "Email profesional que recibe el cliente al instante" },
+        { src: "/email-equipo-con-imagen.png", title: "Notificación al equipo cuando HAY imagen de referencia" },
+        { src: "/email-equipo-sin-imagen.png", title: "Notificación diferente cuando NO subió imagen" },
+        { src: "/sheets-leads.png", title: "Todas las consultas organizadas en tu Sheets" },
+        { src: "/drive-screenshot.png", title: "Imágenes guardadas automáticamente en Drive" },
+        { src: "/sheets-metrics.png", title: "Métricas automáticas: cuántos leads completos vs incompletos" }
+    ];
 
   return (
-    <div className="bg-gray-900 antialiased">
+    <div className="bg-gray-900 antialiased text-gray-300">
       <main>
         {/* Hero Section */}
-        <section className="relative py-20 sm:py-32">
+        <section className="relative py-20 sm:py-32 text-center">
             <div className="absolute inset-0 bg-gray-900/80 backdrop-blur-sm"></div>
             <div 
                 className="absolute inset-0 bg-no-repeat bg-center bg-cover"
                 style={{backgroundImage: 'url(https://picsum.photos/1920/1080?grayscale&blur=5)', opacity: '0.1'}}
             ></div>
-            <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
                 <h1 className="text-4xl font-extrabold tracking-tight text-white sm:text-5xl md:text-6xl">
-                    Deja de gestionar DMs. <span className="gradient-text">Empieza a tatuar más.</span>
+                    Deja de perder horas con DMs. <span className="gradient-text">Automatiza tu formulario de consultas.</span>
                 </h1>
                 <p className="mt-6 max-w-2xl mx-auto text-lg text-gray-300">
-                    ¿Harto de perder horas con DMs y emails? Automatiza la gestión de tus clientes y dedica tu tiempo a lo que de verdad importa: crear arte.
+                    ¿Cansado de responder las mismas preguntas por Instagram? Te instalo un sistema profesional que organiza todas tus consultas en un solo lugar.
                 </p>
-                <div className="mt-10 max-w-sm mx-auto sm:max-w-none sm:flex sm:justify-center">
+                <div className="mt-10">
                     <a href="#pricing" className="px-8 py-4 border border-transparent text-base font-medium rounded-md text-white bg-cyan-600 hover:bg-cyan-700 shadow-lg shadow-cyan-500/20 transform hover:scale-105 transition-transform duration-300">
-                        ¡Solicítalo ya a mitad de precio!
+                        Ver la inversión
                     </a>
                 </div>
             </div>
         </section>
 
-        {/* Problem & Solution Section */}
-        <section id="solution" className="py-20 sm:py-24 bg-gray-900">
+        {/* What You Get Section */}
+        <section id="features" className="py-20 sm:py-24 bg-gray-800/50">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="text-center">
-                    <h2 className="text-base font-semibold text-cyan-400 tracking-wider uppercase">La Solución</h2>
-                    <p className="mt-2 text-3xl font-extrabold text-white tracking-tight sm:text-4xl">
-                        Tu nuevo asistente digital 24/7
-                    </p>
-                    <p className="mt-4 max-w-2xl mx-auto text-xl text-gray-400">
-                        Te presento el Sistema de Gestión de Consultas para Estudios de Tatuajes. Una herramienta que recibe, organiza y responde las solicitudes de tus clientes de forma automática.
-                    </p>
+                    <h2 className="text-3xl font-extrabold text-white tracking-tight sm:text-4xl">Qué consigues exactamente:</h2>
                 </div>
-            </div>
-        </section>
-        
-        {/* Benefits Section */}
-        <section id="benefits" className="py-20 sm:py-24 bg-gray-800/50">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                 <div className="text-center mb-12">
-                     <h2 className="text-3xl font-extrabold text-white tracking-tight sm:text-4xl">
-                        ¿Qué ganas con esto?
-                    </h2>
+                <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div className="bg-gray-800 p-6 rounded-lg border border-gray-700">
+                        <h3 className="text-xl font-bold text-white">📋 Tu Formulario Web Profesional</h3>
+                        <p className="mt-4 text-gray-400">Una página personalizada con tu logo y colores donde tus clientes rellenan: idea, zona, tamaño, presupuesto e imágenes de referencia.</p>
+                    </div>
+                     <div className="bg-gray-800 p-6 rounded-lg border border-gray-700">
+                        <h3 className="text-xl font-bold text-white">📊 Todo Organizado en Google Sheets</h3>
+                        <p className="mt-4 text-gray-400">Cada consulta llega automáticamente a una hoja de cálculo ordenada. Sin apps raras ni complicaciones. Todo en tu Google Drive.</p>
+                    </div>
+                     <div className="bg-gray-800 p-6 rounded-lg border border-gray-700">
+                        <h3 className="text-xl font-bold text-white">✉️ Emails Automáticos</h3>
+                        <p className="mt-4 text-gray-400">El cliente recibe confirmación al instante y tú una notificación con toda la info. Proyectas una imagen profesional desde el minuto 1.</p>
+                    </div>
                 </div>
-                <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
-                    <FeatureCard 
-                        icon={<svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>}
-                        title="Ahorra horas de gestión"
-                        description="Olvídate de responder las mismas preguntas una y otra vez. El sistema lo hace por ti."
-                    />
-                    <FeatureCard 
-                        icon={<svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z" /></svg>}
-                        title="Organización total"
-                        description="Todas las consultas en un único panel, ordenadas y con la información que necesitas."
-                    />
-                    <FeatureCard 
-                        icon={<svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" /></svg>}
-                        title="Imagen más profesional"
-                        description="Tus clientes reciben respuestas al instante, mejorando su experiencia desde el primer contacto."
-                    />
-                    <FeatureCard 
-                        icon={<svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 11.5V14m0-2.5v-6a1.5 1.5 0 113 0m-3 6a1.5 1.5 0 00-3 0v2a7.5 7.5 0 0015 0v-5a1.5 1.5 0 00-3 0m-6-3V11m0-5.5v-1a1.5 1.5 0 013 0v1m0 0V11m0-5.5a1.5 1.5 0 013 0v3m0 0V11" /></svg>}
-                        title="Enfócate en tu arte"
-                        description="Dedica tu energía a diseñar y tatuar, no a tareas administrativas que te queman."
-                    />
+                <div className="mt-8 text-center bg-gray-800 p-6 rounded-lg border border-gray-700 max-w-2xl mx-auto">
+                    <h3 className="text-xl font-bold text-white">🔗 Link Único para Compartir</h3>
+                    <p className="mt-2 text-gray-400">Ponlo en tu bio de Instagram, historias, o envíalo por WhatsApp. Un link. Todo organizado.</p>
                 </div>
             </div>
         </section>
 
         {/* How it Works Section */}
         <section id="how-it-works" className="py-20 sm:py-24">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="lg:text-center">
-                    <h2 className="text-base font-semibold text-cyan-400 tracking-wider uppercase">Proceso</h2>
-                    <p className="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-white sm:text-4xl">¿Cómo funciona?</p>
-                </div>
-                <div className="mt-12 grid gap-10 lg:grid-cols-2 lg:gap-x-8 lg:gap-y-12">
-                    <div className="p-6 bg-gray-800 rounded-lg border border-gray-700">
-                        <h3 className="text-xl font-bold text-white">1. Tu "Recepción" Online (Landing Page)</h3>
-                        <p className="mt-4 text-gray-400">Una página sencilla y personalizada con tu marca. Incluye un formulario inteligente que guía al cliente para que te dé toda la info de una vez: idea, tamaño, zona del cuerpo, imágenes de referencia, etc.</p>
-                    </div>
-                    <div className="p-6 bg-gray-800 rounded-lg border border-gray-700">
-                        <h3 className="text-xl font-bold text-white">2. Tu Panel de Operaciones (Google Sheets)</h3>
-                        <p className="mt-4 text-gray-400">Toda la información del formulario llega a una hoja de cálculo súper organizada. Cada solicitud es una nueva fila con los datos listos para revisar, y un email automático confirma la recepción al cliente.</p>
-                    </div>
-                </div>
-                <div className="mt-10 text-center">
-                     <a href="https://tattoproyect.vercel.app/" target="_blank" rel="noopener noreferrer" className="inline-block text-lg font-medium text-cyan-400 hover:text-cyan-300">
-                        Ver un ejemplo real aquí &rarr;
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        {/* Automated Flow Section */}
-        <section id="automated-flow" className="py-20 sm:py-24 bg-gray-800/50">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="text-center mb-16">
-                    <h2 className="text-3xl font-extrabold text-white tracking-tight sm:text-4xl">
-                        El Flujo Automatizado, Paso a Paso
-                    </h2>
-                    <p className="mt-4 max-w-3xl mx-auto text-xl text-gray-400">
-                        Descubre cómo el sistema transforma el caos en un proceso ordenado y eficiente, desde la consulta inicial hasta el archivo final.
-                    </p>
-                </div>
-
-                <div className="space-y-24">
-                    {/* Step 1 */}
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                        <div className="bg-gray-800 p-2 rounded-xl shadow-2xl shadow-cyan-500/10 border border-gray-700">
-                            <div className="bg-gray-900 rounded-t-lg p-2 flex items-center">
-                                <div className="flex space-x-1.5">
-                                    <div className="w-3 h-3 rounded-full bg-red-500"></div>
-                                    <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
-                                    <div className="w-3 h-3 rounded-full bg-green-500"></div>
-                                </div>
-                            </div>
-                            <img 
-                                src="/form-screenshot.png" 
-                                alt="Formulario web para tatuajes" 
-                                className="rounded-b-lg w-full cursor-pointer hover:opacity-80 transition-opacity" 
-                                onClick={() => openLightbox("/form-screenshot.png")}
-                            />
-                        </div>
-                        <div>
-                            <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-cyan-900/50 text-cyan-300 ring-1 ring-inset ring-cyan-300/20">Paso 1</span>
-                            <h3 className="mt-4 text-2xl font-bold text-white">El Cliente Rellena el Formulario Web</h3>
-                            <p className="mt-2 text-gray-400">
-                                Todo empieza aquí. El cliente describe su idea, adjunta imágenes y envía toda la información necesaria a través de un formulario simple e intuitivo en tu propia web.
-                            </p>
-                        </div>
-                    </div>
-
-                    {/* Step 2 */}
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                        <div className="lg:order-2 bg-gray-800 p-2 rounded-xl shadow-2xl shadow-cyan-500/10 border border-gray-700">
-                            <div className="bg-white rounded-t-lg p-2 flex items-center">
-                                 <div className="flex space-x-1.5">
-                                    <div className="w-3 h-3 rounded-full bg-gray-200"></div>
-                                    <div className="w-3 h-3 rounded-full bg-gray-200"></div>
-                                    <div className="w-3 h-3 rounded-full bg-gray-200"></div>
-                                </div>
-                            </div>
-                            <img 
-                                src="/email-cliente.png" 
-                                alt="Email de confirmación instantáneo" 
-                                className="rounded-b-lg w-full cursor-pointer hover:opacity-80 transition-opacity" 
-                                onClick={() => openLightbox("/email-cliente.png")}
-                            />
-                        </div>
-                        <div className="lg:order-1">
-                            <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-cyan-900/50 text-cyan-300 ring-1 ring-inset ring-cyan-300/20">Paso 2</span>
-                            <h3 className="mt-4 text-2xl font-bold text-white">Email de Confirmación Instantáneo</h3>
-                            <p className="mt-2 text-gray-400">
-                                Al segundo de enviar, el cliente recibe un email profesional que confirma la recepción de su consulta. Esto genera confianza y gestiona sus expectativas desde el primer minuto.
-                            </p>
-                        </div>
-                    </div>
-
-                    {/* Step 3 */}
-                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                        <div className="bg-gray-800 p-4 rounded-xl shadow-2xl shadow-cyan-500/10 border border-gray-700">
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                <img 
-                                    src="/email-equipo-con-imagen.png" 
-                                    alt="Notificación con imagen de referencia" 
-                                    className="rounded-lg w-full border border-gray-700 cursor-pointer hover:opacity-80 transition-opacity"
-                                    onClick={() => openLightbox("/email-equipo-con-imagen.png")}
-                                />
-                                <img 
-                                    src="/email-equipo-sin-imagen.png" 
-                                    alt="Notificación sin imagen de referencia" 
-                                    className="rounded-lg w-full border border-gray-700 cursor-pointer hover:opacity-80 transition-opacity"
-                                    onClick={() => openLightbox("/email-equipo-sin-imagen.png")}
-                                />
-                            </div>
-                        </div>
-                        <div>
-                            <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-cyan-900/50 text-cyan-300 ring-1 ring-inset ring-cyan-300/20">Paso 3</span>
-                            <h3 className="mt-4 text-2xl font-bold text-white">Notificación Inteligente al Equipo</h3>
-                            <p className="mt-2 text-gray-400">
-                                Simultáneamente, el sistema notifica a tu equipo. El email contiene toda la información organizada y diferencia claramente si el cliente adjuntó una imagen de referencia o no.
-                            </p>
-                        </div>
-                    </div>
-
-                    {/* Step 4 */}
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                        <div className="lg:order-2 bg-gray-800 p-4 rounded-xl shadow-2xl shadow-cyan-500/10 border border-gray-700">
-                             <div className="grid grid-cols-1 gap-4">
-                                <img 
-                                    src="/sheets-leads.png" 
-                                    alt="Google Sheets Leads" 
-                                    className="rounded-lg w-full border border-gray-700 cursor-pointer hover:opacity-80 transition-opacity"
-                                    onClick={() => openLightbox("/sheets-leads.png")}
-                                />
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                    <img 
-                                        src="/sheets-metrics.png" 
-                                        alt="Google Sheets Metrics" 
-                                        className="rounded-lg w-full border border-gray-700 cursor-pointer hover:opacity-80 transition-opacity"
-                                        onClick={() => openLightbox("/sheets-metrics.png")}
-                                    />
-                                    <img 
-                                        src="/drive-screenshot.png" 
-                                        alt="Google Drive Archive" 
-                                        className="rounded-lg w-full border border-gray-700 cursor-pointer hover:opacity-80 transition-opacity"
-                                        onClick={() => openLightbox("/drive-screenshot.png")}
-                                    />
-                                </div>
-                            </div>
-                        </div>
-                        <div className="lg:order-1">
-                            <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-cyan-900/50 text-cyan-300 ring-1 ring-inset ring-cyan-300/20">Paso 4</span>
-                            <h3 className="mt-4 text-2xl font-bold text-white">Organización y Archivo Automático</h3>
-                            <p className="mt-2 text-gray-400">
-                                Cero trabajo manual. El sistema archiva cada pieza de información en el lugar correcto: los datos en Google Sheets (separando leads y métricas) y los archivos visuales en Google Drive.
-                            </p>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-
-        {/* Package Details Section */}
-        <section id="features" className="bg-gray-900 py-20 sm:py-24">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="text-center">
-                    <h2 className="text-3xl font-extrabold text-white sm:text-4xl">Un producto "llave en mano"</h2>
-                    <p className="mt-4 text-xl text-gray-400">Yo me encargo de todo. Esto es lo que incluye exactamente el paquete:</p>
+                    <h2 className="text-3xl font-extrabold text-white tracking-tight sm:text-4xl">Cómo funciona en la práctica</h2>
+                    <p className="mt-4 text-xl text-gray-400">El flujo completo, paso a paso:</p>
                 </div>
-                <div className="mt-12 max-w-3xl mx-auto">
+                <div className="mt-12 text-left max-w-2xl mx-auto space-y-6">
+                    <p><strong className="text-cyan-400">1. Cliente rellena tu formulario web:</strong> Describe su idea, sube foto de referencia, indica zona del cuerpo y tamaño. Todo en un formulario simple.</p>
+                    <p><strong className="text-cyan-400">2. Recibe confirmación al instante:</strong> Email automático profesional confirmando que su consulta fue recibida. Primera impresión: 10/10.</p>
+                    <p><strong className="text-cyan-400">3. Tú recibes notificación completa:</strong> Email con todos los detalles organizados. Si subió imagen, la ves directamente. Si no, también lo sabes.</p>
+                    <p><strong className="text-cyan-400">4. Todo se guarda automáticamente:</strong> Los datos en Google Sheets, las imágenes en Google Drive y las métricas actualizadas.</p>
+                    <p><strong className="text-cyan-400">5. Tú decides cuándo responder:</strong> Revisas el Sheets cuando quieras y contactas solo a los leads que te interesan.</p>
+                </div>
+                
+                <div className="text-center mt-20">
+                    <h3 className="text-2xl font-bold text-white">👇 Así se ve en la vida real:</h3>
+                </div>
+
+                <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div className="lg:col-span-2">
+                        <ImageCard src={images[0].src} title={images[0].title} onClick={() => openLightbox(0)} />
+                    </div>
+                    <ImageCard src={images[1].src} title={images[1].title} onClick={() => openLightbox(1)} />
+                    <ImageCard src={images[2].src} title={images[2].title} onClick={() => openLightbox(2)} />
+                    <ImageCard src={images[3].src} title={images[3].title} onClick={() => openLightbox(3)} />
+                    <ImageCard src={images[4].src} title={images[4].title} onClick={() => openLightbox(4)} />
+                    <ImageCard src={images[5].src} title={images[5].title} onClick={() => openLightbox(5)} />
+                    <div className="lg:col-span-3">
+                        <ImageCard src={images[6].src} title={images[6].title} onClick={() => openLightbox(6)} />
+                    </div>
+                </div>
+
+                <div className="mt-12 bg-gray-800/50 border border-cyan-500/20 rounded-lg p-6 flex items-start space-x-4 max-w-3xl mx-auto">
+                    <span className="text-2xl flex-shrink-0 mt-1">💡</span>
+                    <div>
+                        <h4 className="font-bold text-white">Nota Importante</h4>
+                        <p className="text-gray-400">Estas son capturas reales del sistema funcionando. Tu instalación será idéntica, personalizada con tu marca.</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        {/* What's Included Section */}
+        <section id="included" className="py-20 sm:py-24 bg-gray-800/50">
+            <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="text-center">
+                    <h2 className="text-3xl font-extrabold text-white sm:text-4xl">Qué incluye el servicio</h2>
+                </div>
+                <div className="mt-12 max-w-md mx-auto md:max-w-4xl grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4">
                     <ul role="list" className="space-y-4">
-                        <CheckListItem>Landing page/formulario personalizado con tu marca.</CheckListItem>
-                        <CheckListItem>Configuración del flujo de automatización completo (Formulario &gt; Google Sheets &gt; Emails).</CheckListItem>
-                        <CheckListItem>Instalación en tus propias cuentas para que tengas el control total.</CheckListItem>
-                        <CheckListItem>Guía rápida y sencilla para que sepas cómo funciona.</CheckListItem>
-                        <CheckListItem>Lo tienes funcionando en 72h máximo.</CheckListItem>
+                        <CheckListItem>Instalación completa en 48-72 horas</CheckListItem>
+                        <CheckListItem>Landing page personalizada con tu marca</CheckListItem>
+                        <CheckListItem>Formulario configurado con tus preguntas</CheckListItem>
+                        <CheckListItem>Automatización de emails (cliente + tú)</CheckListItem>
                     </ul>
-                     <p className="mt-6 text-center text-sm text-gray-500">(No incluye personalizaciones complejas o gestión de redes sociales).</p>
+                    <ul role="list" className="space-y-4">
+                        <CheckListItem>Google Sheets organizado y listo</CheckListItem>
+                        <CheckListItem>Tutorial en video para que sepas usarlo</CheckListItem>
+                        <CheckListItem>2 semanas de soporte por WhatsApp</CheckListItem>
+                    </ul>
                 </div>
+                <p className="mt-8 text-center text-lg font-semibold text-cyan-300">Todo queda en TUS cuentas. Control 100% tuyo.</p>
             </div>
         </section>
-
+        
         {/* Pricing Section */}
-        <section id="pricing" className="py-20 sm:py-24">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <section id="pricing" className="py-20 sm:py-24 bg-gray-900">
+            <div className="max-w-lg mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="text-center">
-                    <h2 className="text-base font-semibold text-cyan-400 tracking-wider uppercase">La Inversión</h2>
+                    <h2 className="text-base font-semibold text-cyan-400 tracking-wider uppercase">La inversión</h2>
                     <p className="mt-2 text-3xl font-extrabold text-white tracking-tight sm:text-4xl">
-                        Oferta de Lanzamiento Limitada
-                    </p>
-                    <p className="mt-4 max-w-2xl mx-auto text-xl text-gray-400">
-                        Para los 3 primeros estudios que se sumen, tengo una oferta especial que no se repetirá.
+                        Setup Completo
                     </p>
                 </div>
                 
-                <div className="mt-12 max-w-lg mx-auto rounded-lg shadow-xl bg-gray-800 border border-cyan-500/50 ring-1 ring-cyan-500/30 overflow-hidden lg:max-w-none lg:flex">
-                    <div className="bg-gray-800 px-6 py-8 lg:p-12 flex-1">
-                        <h3 className="text-2xl font-extrabold text-white sm:text-3xl">Paquete Completo</h3>
-                        <p className="mt-6 text-base text-gray-400">La inversión inicial se amortiza sola con el tiempo que te ahorra las primeras semanas.</p>
-                        <div className="mt-8">
-                            <div className="flex items-center">
-                                <h4 className="flex-shrink-0 pr-4 bg-gray-800 text-sm tracking-wider font-semibold uppercase text-cyan-400">Pago único por instalación</h4>
-                                <div className="flex-1 border-t-2 border-gray-600"></div>
-                            </div>
-                            <p className="mt-4">
-                                <span className="text-5xl font-extrabold text-white">225€</span>
-                                <span className="text-2xl font-medium text-gray-400 line-through ml-2">450€</span>
-                            </p>
-                             <p className="mt-1 text-lg font-bold text-green-400">¡50% de descuento!</p>
-                        </div>
-                        <div className="mt-8 pt-6 border-t border-gray-700">
-                            <div className="flex items-center">
-                                <h4 className="flex-shrink-0 pr-4 bg-gray-800 text-sm tracking-wider font-semibold uppercase text-cyan-400">Cuota mensual</h4>
-                                <div className="flex-1 border-t-2 border-gray-600"></div>
-                            </div>
-                            <p className="mt-4">
-                                <span className="text-5xl font-extrabold text-white">49€</span>
-                                <span className="text-lg font-medium text-gray-400">/mes</span>
-                            </p>
-                            <p className="mt-1 text-sm text-gray-500">(mantenimiento y hosting)</p>
-                        </div>
-                         <p className="mt-6 text-sm text-gray-500">(Precios sin IVA)</p>
+                <div className="mt-10 bg-gray-800 rounded-2xl border border-cyan-500/30 shadow-2xl shadow-cyan-500/10 text-center p-8">
+                    <p className="font-semibold text-cyan-300">Primeros 5 estudios:</p>
+                    <div className="mt-4 flex items-center justify-center gap-4">
+                        <span className="text-5xl font-extrabold text-white">149€</span>
+                        <span className="text-3xl font-medium text-gray-500 line-through">299€</span>
                     </div>
-                    <div className="py-8 px-6 text-center bg-gray-800 lg:flex-shrink-0 lg:flex lg:flex-col lg:justify-center lg:p-12 border-t border-gray-700 lg:border-t-0 lg:border-l">
-                         <p className="text-lg leading-6 font-medium text-white">¿Listo/a para organizar tu curro?</p>
-                         <div className="mt-4 flex items-center justify-center text-5xl font-extrabold text-white">
-                            <span>Tatuar más</span>
-                         </div>
-                        <div className="mt-6">
-                            <a href="mailto:info@iswstudioweb.com" className="w-full px-6 py-3 border border-transparent rounded-md shadow-lg text-base font-medium text-white bg-cyan-600 hover:bg-cyan-700">
-                                Contactar ahora
-                            </a>
-                        </div>
-                         <p className="mt-4 text-sm">
-                            <a href="#cta" className="font-medium text-gray-400 hover:text-gray-200">Agendemos una llamada de 15 min</a>
-                        </p>
+                    <p className="mt-4 text-lg font-medium text-gray-300">Pago único. Sin mensualidades.</p>
+                    <p className="mt-2 text-sm text-gray-400">(Precio normal 299€ después de los primeros 5)</p>
+                    <a href="#contact" className="mt-8 w-full inline-block px-6 py-3 border border-transparent rounded-md shadow-lg text-base font-medium text-white bg-cyan-600 hover:bg-cyan-700 sm:w-auto">
+                        Reservar mi plaza
+                    </a>
+                    <p className="mt-6 text-xs text-gray-500">
+                        No incluye: Personalizaciones complejas, gestión de redes sociales, o desarrollo a medida.
+                    </p>
+                </div>
+            </div>
+        </section>
+        
+        {/* Testimonial & Ideal For Section */}
+        <section className="py-20 sm:py-24 bg-gray-800/50">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div>
+                    <h2 className="text-3xl font-extrabold text-white text-center mb-8">Por qué funciona</h2>
+                    <figure>
+                        <blockquote className="text-center text-xl font-medium text-white leading-8 bg-gray-800 p-6 rounded-lg border border-gray-700">
+                            <p>"Antes tardaba 2 horas al día respondiendo DMs. Ahora reviso el Sheets cuando quiero y solo respondo a consultas serias con presupuesto."</p>
+                        </blockquote>
+                        <figcaption className="mt-4">
+                            <div className="text-center text-base text-gray-400">— Ejemplo de caso de uso real</div>
+                        </figcaption>
+                    </figure>
+                </div>
+                <div>
+                    <h2 className="text-3xl font-extrabold text-white text-center mb-8">Ideal para:</h2>
+                    <div className="max-w-md mx-auto">
+                        <ul role="list" className="space-y-4">
+                            <CheckListItem>Estudios pequeños (1-3 artistas)</CheckListItem>
+                            <CheckListItem>Tatuadores que reciben muchas consultas genéricas</CheckListItem>
+                            <CheckListItem>Quien quiera proyectar una imagen más profesional</CheckListItem>
+                        </ul>
                     </div>
                 </div>
             </div>
         </section>
-
+        
+        {/* FAQ Section */}
+        <section className="py-20 sm:py-24">
+            <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 className="text-3xl font-extrabold text-white text-center">FAQ Rápido</h2>
+                <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div className="bg-gray-800 p-6 rounded-lg border border-gray-700">
+                        <h3 className="font-semibold text-white">¿Necesito conocimientos técnicos?</h3>
+                        <p className="mt-2 text-gray-400">No. Te lo dejo todo instalado. Solo necesitas saber abrir Google Sheets (como Excel).</p>
+                    </div>
+                    <div className="bg-gray-800 p-6 rounded-lg border border-gray-700">
+                        <h3 className="font-semibold text-white">¿Funciona con Instagram?</h3>
+                        <p className="mt-2 text-gray-400">Sí. Pones el link en tu bio, stories o envías por DM.</p>
+                    </div>
+                    <div className="bg-gray-800 p-6 rounded-lg border border-gray-700">
+                        <h3 className="font-semibold text-white">¿Puedo cambiar las preguntas del formulario después?</h3>
+                        <p className="mt-2 text-gray-400">Sí. Te enseño cómo en el tutorial. Es sencillo.</p>
+                    </div>
+                    <div className="bg-gray-800 p-6 rounded-lg border border-gray-700">
+                        <h3 className="font-semibold text-white">¿Hay costos ocultos?</h3>
+                        <p className="mt-2 text-gray-400">No. Solo pagas los 149€ una vez. Google Sheets es gratis siempre.</p>
+                    </div>
+                     <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 md:col-span-2">
+                        <h3 className="font-semibold text-white">¿Qué pasa si tengo problemas?</h3>
+                        <p className="mt-2 text-gray-400">Tienes 2 semanas de soporte incluido por WhatsApp para resolver cualquier duda sobre el sistema.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
         {/* Final CTA Section */}
-        <section id="cta" className="bg-gray-900 py-20 sm:py-24">
+        <section id="contact" className="bg-cyan-800/20 py-20 sm:py-24">
             <div className="max-w-3xl mx-auto text-center px-4 sm:px-6 lg:px-8">
                 <h2 className="text-3xl font-extrabold text-white tracking-tight sm:text-4xl">
-                    ¿Listo/a para dar el paso?
+                    Siguiente paso
                 </h2>
-                <p className="mt-4 text-lg text-gray-400">
-                    Si te interesa, el siguiente paso es fácil. Respóndeme a este email y agendamos una llamada rápida de 15 minutos sin compromiso para resolver cualquier duda que tengas.
+                <p className="mt-4 text-lg text-gray-300">
+                    Te respondo en menos de 24h y empezamos.
                 </p>
-                <div className="mt-8">
-                    <a href="mailto:info@iswstudioweb.com" className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-gray-900 bg-cyan-400 hover:bg-cyan-300">
-                        Agendar llamada
+                <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
+                    <a href="https://wa.me/600204383" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-green-500 hover:bg-green-600 w-full sm:w-auto">
+                        <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 4.315 1.919 6.066l-1.472 4.244 4.352-1.141z" /></svg>
+                        Escríbeme por WhatsApp
+                    </a>
+                    <a href="mailto:info@iswstudioweb.com" className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-gray-900 bg-cyan-400 hover:bg-cyan-300 w-full sm:w-auto">
+                        O envíame un email
                     </a>
                 </div>
+                <p className="mt-6 text-sm text-cyan-200/60 font-semibold">Plazas limitadas: Solo puedo atender 5 instalaciones este mes por cuestiones de tiempo.</p>
             </div>
         </section>
 
         {/* Footer */}
         <footer className="bg-gray-900 border-t border-gray-800">
             <div className="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8 text-center text-gray-500">
-                 <img src="/isw-logo.png" alt="ISW Studio Web Logo" className="h-12 w-auto mx-auto mb-4" />
-                 <p>&copy; {new Date().getFullYear()} iswstudioweb.com</p>
-                 <p className="mt-2">IVAN.C.G</p>
-                 <a href="mailto:info@iswstudioweb.com" className="hover:text-cyan-400">info@iswstudioweb.com</a>
+                 <p className="font-bold text-white">ISW Studio Web</p>
+                 <p className="text-sm">Setup profesional para estudios de tatuajes</p>
+                 <p className="mt-4 text-xs">&copy; {new Date().getFullYear()} iswstudioweb.com</p>
             </div>
         </footer>
       </main>
@@ -399,9 +302,9 @@ const App: React.FC = () => {
       <Lightbox
         open={open}
         close={() => setOpen(false)}
-        slides={slides}
+        slides={images}
+        index={imageIndex}
         plugins={[Zoom]}
-        index={slides.findIndex(slide => slide.src === imageSrc)}
       />
     </div>
   );
