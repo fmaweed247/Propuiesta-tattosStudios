@@ -210,23 +210,24 @@ const App: React.FC = () => {
                     </p>
                 </div>
                 
-                <div className="mt-12 grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
-                    {/* Columna de Precios */}
-                    <div className="bg-gray-800 rounded-2xl border border-gray-700 p-8 space-y-8 h-full flex flex-col">
+                <div className="mt-12 bg-gray-800 rounded-2xl border border-gray-700 divide-y divide-gray-700">
+                    <div className="p-8 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
                         <div>
                             <h3 className="text-xl font-bold text-white">Setup inicial (pago único)</h3>
-                            <p className="mt-4">
+                            <p className="mt-2 text-gray-400">Incluye instalación completa, personalización y puesta en marcha.</p>
+                        </div>
+                        <div className="text-left md:text-right">
+                            <p>
                                 <span className="text-5xl font-extrabold text-white">149€</span>
                                 <span className="text-3xl font-medium text-gray-500 line-through ml-3">299€</span>
                             </p>
-                            <p className="mt-2 text-gray-400">Incluye instalación completa, personalización y puesta en marcha.</p>
-                            <p className="mt-2 text-sm font-bold text-green-400">Ahorras 150€ en la instalación</p>
                         </div>
-                        <div className="border-t border-gray-700 pt-8 mt-auto">
-                            <h3 className="text-xl font-bold text-white">Mensualidad</h3>
-                            <p className="mt-4"><span className="text-5xl font-extrabold text-white">29€</span><span className="text-gray-400">/mes</span></p>
-                            <p className="text-sm text-gray-400">(Precio normal: 49€/mes)</p>
-                            <div className="mt-4 text-left text-gray-400">
+                    </div>
+
+                    <div className="p-8 grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div>
+                             <h3 className="text-xl font-bold text-white">Mensualidad</h3>
+                             <div className="mt-4 text-left text-gray-400">
                                 <h4 className="font-semibold text-gray-200">¿Por qué mensual? Porque el sistema necesita:</h4>
                                 <ul className="mt-2 space-y-2 text-sm">
                                     <CheckListItem checkColor="text-cyan-400">Servidor activo 24/7 para las automatizaciones.</CheckListItem>
@@ -237,41 +238,31 @@ const App: React.FC = () => {
                                 <p className="mt-3 text-xs italic">(Si dejas de pagar, el servidor se apaga y el sistema deja de funcionar.)</p>
                             </div>
                         </div>
-                    </div>
-
-                    {/* Columna de Oferta */}
-                    <div className="bg-gray-800 rounded-2xl border border-cyan-500/30 shadow-2xl shadow-cyan-500/10 p-8">
-                        <div className="text-center">
-                            <h3 className="text-xl font-bold text-green-400">🎁 Oferta de lanzamiento</h3>
-                            <p className="mt-1 text-gray-300">(primeros 5 estudios)</p>
+                         <div className="text-left md:text-right">
+                            <p>
+                               <span className="text-5xl font-extrabold text-white">29€<span className="text-gray-400 text-3xl">/mes</span></span>
+                               <span className="text-3xl font-medium text-gray-500 line-through ml-3">49€/mes</span>
+                            </p>
                         </div>
-                        <div className="mt-6 text-center">
-                            <p className="text-lg font-medium text-gray-300">Consigue un <span className="font-bold">DOBLE descuento PERMANENTE</span>:</p>
-                            <div className="mt-4 space-y-2">
-                                <p><span className="font-semibold text-gray-200">Setup:</span> <span className="text-gray-500 line-through">299€</span> <span className="text-white font-bold">149€</span> (50% OFF)</p>
-                                <p><span className="font-semibold text-gray-200">Mensualidad:</span> <span className="text-gray-500 line-through">49€</span> <span className="text-white font-bold">29€/mes de por vida</span></p>
-                            </div>
-                        </div>
-                        <div className="mt-8 border-t border-gray-700 pt-6">
-                             <h4 className="font-semibold text-white text-center text-lg">💰 Ahorro total:</h4>
-                             <div className="mt-4 text-sm space-y-2 text-gray-400">
-                                 <p><strong className="text-gray-200">Primer año:</strong> <span className="text-green-400 font-bold">390€</span> (<span className="text-white">150€</span> setup + <span className="text-white">240€</span> mensualidades)</p>
-                                 <p><strong className="text-gray-200">Cada año siguiente:</strong> Ahorro permanente de <span className="text-green-400 font-bold">240€/año</span></p>
-                             </div>
-                        </div>
-                        <div className="mt-6 border-t border-gray-700 pt-6">
-                            <p className="font-semibold text-white text-center">Total a pagar (primer año):</p>
-                             <p className="mt-2 text-center text-lg text-gray-400">€149 + (€29 × 12) = <span className="font-bold text-2xl text-white">€497</span></p>
-                             <p className="mt-2 text-center text-cyan-300 font-semibold">Eso son €1.36/día (menos que un café) para no tener que gestionar DMs nunca más.</p>
-                        </div>
-                         <a href="#contact" className="mt-8 w-full inline-block text-center px-6 py-3 border border-transparent rounded-md shadow-lg text-base font-medium text-white bg-cyan-600 hover:bg-cyan-700">
-                            Empezar ahora
-                        </a>
                     </div>
                 </div>
-                <p className="mt-6 text-center text-xs text-gray-500">
-                    No incluye: Personalizaciones complejas fuera del paquete estándar, desarrollo a medida o gestión de redes sociales.
-                </p>
+
+                <div className="mt-8 bg-gray-800 rounded-2xl border border-cyan-500/30 shadow-2xl shadow-cyan-500/10 p-8 text-center">
+                    <h3 className="text-xl font-bold text-green-400">🎁 Oferta de lanzamiento (primeros 5 estudios)</h3>
+                    <p className="mt-4 text-lg text-gray-300">Consigue un <span className="font-bold text-white">DOBLE DESCUENTO PERMANENTE</span>:</p>
+                    <p className="mt-2 text-2xl font-bold text-white">€149 setup + €29/mes DE POR VIDA</p>
+                    <p className="mt-2 text-gray-400">Ahorras <span className="text-white">€150 ahora</span> + <span className="text-white">€240/año</span> para siempre <br/>(vs precio normal: €299 + €49/mes)</p>
+                    
+                    <div className="mt-6 border-t border-gray-700 pt-6">
+                        <p className="font-semibold text-white">Total primer año: <span className="text-2xl font-bold text-white">€497</span></p>
+                        <p className="mt-2 text-cyan-300 font-semibold">Eso son €1.36/día (menos que un café)</p>
+                    </div>
+                    
+                    <a href="#contact" className="mt-8 w-full md:w-auto inline-block px-10 py-4 border border-transparent rounded-md shadow-lg text-lg font-bold text-white bg-cyan-600 hover:bg-cyan-700">
+                        Empezar ahora
+                    </a>
+                    <p className="mt-4 font-bold text-yellow-400">⏰ Quedan 3 de 5 plazas disponibles</p>
+                </div>
             </div>
         </section>
         
@@ -342,8 +333,8 @@ const App: React.FC = () => {
                 </div>
                 <p className="mt-4 text-sm text-gray-400">Te respondo en menos de 24h y empezamos.<br/>(Si prefieres email: info@iswstudioweb.com)</p>
                 <div className="mt-8">
-                    <p className="font-semibold text-cyan-200/80">Plazas limitadas: 5 de 5 disponibles</p>
-                    <p className="text-xs text-gray-500 mt-1">(Actualizado: 12 de octubre 2025)</p>
+                    <p className="font-semibold text-yellow-400 animate-pulse">⏰ Quedan 3 de 5 plazas disponibles</p>
+                    <p className="text-xs text-gray-500 mt-1">(Actualizado: 12 de octubre de 2025)</p>
                 </div>
             </div>
         </section>
