@@ -140,7 +140,6 @@ const App: React.FC = () => {
                     <h3 className="text-2xl font-bold text-white">👇 Así se ve en la vida real:</h3>
                 </div>
 
-                {/* --- SECCIÓN DE IMÁGENES CORREGIDA --- */}
                 <div className="mt-8 grid grid-cols-1 md:grid-cols-6 gap-6">
                     <div className="md:col-span-3">
                         <ImageCard src={images[0].src} title={images[0].title} onClick={() => openLightbox(0)} />
@@ -303,9 +302,10 @@ const App: React.FC = () => {
                         <h3 className="font-semibold text-white">¿Funciona con Instagram?</h3>
                         <p className="mt-2 text-gray-400">Sí. Pones el link en tu bio, stories o envías por DM.</p>
                     </div>
+                    {/* --- PREGUNTA MODIFICADA --- */}
                     <div className="bg-gray-800 p-6 rounded-lg border border-gray-700">
                         <h3 className="font-semibold text-white">¿Puedo cambiar las preguntas del formulario después?</h3>
-                        <p className="mt-2 text-gray-400">Sí. Te enseño cómo en el tutorial. Es sencillo.</p>
+                        <p className="mt-2 text-gray-400">Sí, por supuesto. Para garantizar que el sistema siga funcionando, solo tienes que solicitar los cambios y se aplicarán sin coste adicional como parte del mantenimiento mensual incluido.</p>
                     </div>
                     <div className="bg-gray-800 p-6 rounded-lg border border-gray-700">
                         <h3 className="font-semibold text-white">¿Hay costos ocultos?</h3>
