@@ -135,16 +135,27 @@ const App: React.FC = () => {
                     <h3 className="text-2xl font-bold text-white">👇 Así se ve en la vida real:</h3>
                 </div>
 
-                <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <div className="lg:col-span-2">
+                {/* --- SECCIÓN DE IMÁGENES CORREGIDA --- */}
+                <div className="mt-8 grid grid-cols-1 md:grid-cols-6 gap-6">
+                    <div className="md:col-span-3">
                         <ImageCard src={images[0].src} title={images[0].title} onClick={() => openLightbox(0)} />
                     </div>
-                    <ImageCard src={images[1].src} title={images[1].title} onClick={() => openLightbox(1)} />
-                    <ImageCard src={images[2].src} title={images[2].title} onClick={() => openLightbox(2)} />
-                    <ImageCard src={images[3].src} title={images[3].title} onClick={() => openLightbox(3)} />
-                    <ImageCard src={images[4].src} title={images[4].title} onClick={() => openLightbox(4)} />
-                    <ImageCard src={images[5].src} title={images[5].title} onClick={() => openLightbox(5)} />
-                    <div className="lg:col-span-3">
+                    <div className="md:col-span-3">
+                        <ImageCard src={images[1].src} title={images[1].title} onClick={() => openLightbox(1)} />
+                    </div>
+                    <div className="md:col-span-3">
+                        <ImageCard src={images[2].src} title={images[2].title} onClick={() => openLightbox(2)} />
+                    </div>
+                    <div className="md:col-span-3">
+                        <ImageCard src={images[3].src} title={images[3].title} onClick={() => openLightbox(3)} />
+                    </div>
+                    <div className="md:col-span-6">
+                        <ImageCard src={images[4].src} title={images[4].title} onClick={() => openLightbox(4)} />
+                    </div>
+                     <div className="md:col-span-3">
+                        <ImageCard src={images[5].src} title={images[5].title} onClick={() => openLightbox(5)} />
+                    </div>
+                    <div className="md:col-span-3">
                         <ImageCard src={images[6].src} title={images[6].title} onClick={() => openLightbox(6)} />
                     </div>
                 </div>
@@ -176,14 +187,14 @@ const App: React.FC = () => {
                     <ul role="list" className="space-y-4">
                         <CheckListItem>Google Sheets organizado y listo</CheckListItem>
                         <CheckListItem>Tutorial en video para que sepas usarlo</CheckListItem>
-                        <CheckListItem checkColor="text-green-400">2 semanas de soporte por WhatsApp</CheckListItem>
+                        <CheckListItem checkColor="text-green-400">Soporte técnico por WhatsApp</CheckListItem>
                     </ul>
                 </div>
                 <p className="mt-8 text-center text-lg font-semibold text-cyan-300">Todo queda en TUS cuentas. Control 100% tuyo.</p>
             </div>
         </section>
         
-        {/* --- SECCIÓN DE PRECIOS MODIFICADA --- */}
+        {/* Pricing Section */}
         <section id="pricing" className="py-20 sm:py-24 bg-gray-900">
             <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="text-center">
@@ -207,12 +218,12 @@ const App: React.FC = () => {
                             <div className="mt-4 text-left text-gray-400">
                                 <h4 className="font-semibold text-gray-200">¿Por qué mensual? Porque el sistema necesita:</h4>
                                 <ul className="mt-2 space-y-2 text-sm">
-                                    <li className="flex items-start"><span className="text-cyan-400 mr-2 mt-1">✓</span> Servidor activo 24/7 donde funcionan las automatizaciones.</li>
+                                    <li className="flex items-start"><span className="text-cyan-400 mr-2 mt-1">✓</span> Servidor activo 24/7 para las automatizaciones.</li>
                                     <li className="flex items-start"><span className="text-cyan-400 mr-2 mt-1">✓</span> Mantenimiento técnico y actualizaciones.</li>
                                     <li className="flex items-start"><span className="text-cyan-400 mr-2 mt-1">✓</span> Backups automáticos de tu información.</li>
                                     <li className="flex items-start"><span className="text-cyan-400 mr-2 mt-1">✓</span> Soporte técnico por WhatsApp.</li>
                                 </ul>
-                                <p className="mt-3 text-xs italic">(Si dejaras de pagar, el servidor se apaga y el sistema deja de funcionar. Por eso no puede ser pago único.)</p>
+                                <p className="mt-3 text-xs italic">(Si dejas de pagar, el servidor se apaga y el sistema deja de funcionar.)</p>
                             </div>
                         </div>
                     </div>
