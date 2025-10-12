@@ -75,7 +75,6 @@ const App: React.FC = () => {
         {/* Hero Section */}
         <section className="relative py-20 sm:py-32 text-center">
             <div className="absolute inset-0 bg-gray-900/80 backdrop-blur-sm"></div>
-            {/* --- IMAGEN DE FONDO MODIFICADA --- */}
             <div 
                 className="absolute inset-0 bg-no-repeat bg-center bg-cover"
                 style={{
@@ -84,8 +83,9 @@ const App: React.FC = () => {
                 }}
             ></div>
             <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                {/* --- TITULAR MODIFICADO --- */}
                 <h1 className="text-4xl font-extrabold tracking-tight text-white sm:text-5xl md:text-6xl">
-                    Deja de perder horas con DMs. <span className="gradient-text">Automatiza tu formulario de consultas.</span>
+                    Deja de perder 2 horas al día con DMs. <span className="gradient-text">Automatiza tu formulario de consultas.</span>
                 </h1>
                 <p className="mt-6 max-w-2xl mx-auto text-lg text-gray-300">
                     ¿Cansado de responder las mismas preguntas por Instagram? Te instalo un sistema profesional que organiza todas tus consultas en un solo lugar.
@@ -175,7 +175,6 @@ const App: React.FC = () => {
                         <p className="text-gray-400">Estas son capturas reales del sistema funcionando. Tu instalación será idéntica, personalizada con tu marca.</p>
                     </div>
                 </div>
-
             </div>
         </section>
 
@@ -202,7 +201,7 @@ const App: React.FC = () => {
             </div>
         </section>
         
-        {/* Pricing Section */}
+        {/* --- SECCIÓN DE PRECIOS MODIFICADA --- */}
         <section id="pricing" className="py-20 sm:py-24 bg-gray-900">
             <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="text-center">
@@ -214,7 +213,7 @@ const App: React.FC = () => {
                 
                 <div className="mt-12 grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
                     {/* Columna de Precios */}
-                    <div className="bg-gray-800 rounded-2xl border border-gray-700 p-8 space-y-8">
+                    <div className="bg-gray-800 rounded-2xl border border-gray-700 p-8 space-y-8 h-full flex flex-col justify-between">
                         <div>
                             <h3 className="text-xl font-bold text-white">Setup inicial (pago único)</h3>
                             <p className="mt-4 text-5xl font-extrabold text-white">149€</p>
@@ -223,16 +222,7 @@ const App: React.FC = () => {
                         <div className="border-t border-gray-700 pt-8">
                             <h3 className="text-xl font-bold text-white">Mensualidad</h3>
                             <p className="mt-4"><span className="text-5xl font-extrabold text-white">29€</span><span className="text-gray-400">/mes</span></p>
-                            <div className="mt-4 text-left text-gray-400">
-                                <h4 className="font-semibold text-gray-200">¿Por qué mensual? Porque el sistema necesita:</h4>
-                                <ul className="mt-2 space-y-2 text-sm">
-                                    <li className="flex items-start"><span className="text-cyan-400 mr-2 mt-1">✓</span> Servidor activo 24/7 para las automatizaciones.</li>
-                                    <li className="flex items-start"><span className="text-cyan-400 mr-2 mt-1">✓</span> Mantenimiento técnico y actualizaciones.</li>
-                                    <li className="flex items-start"><span className="text-cyan-400 mr-2 mt-1">✓</span> Backups automáticos de tu información.</li>
-                                    <li className="flex items-start"><span className="text-cyan-400 mr-2 mt-1">✓</span> Soporte técnico por WhatsApp.</li>
-                                </ul>
-                                <p className="mt-3 text-xs italic">(Si dejas de pagar, el servidor se apaga y el sistema deja de funcionar.)</p>
-                            </div>
+                            <p className="mt-2 text-gray-400">(Precio normal: 49€/mes)</p>
                         </div>
                     </div>
 
@@ -243,17 +233,16 @@ const App: React.FC = () => {
                             <p className="mt-1 text-gray-300">(primeros 5 estudios)</p>
                         </div>
                         <div className="mt-6 text-center">
-                            <p className="text-lg font-medium text-gray-400">Mensualidad los primeros 3 meses:</p>
+                            <p className="text-lg font-medium text-gray-400">Consigue un descuento PERMANENTE:</p>
                             <p className="mt-2">
                                 <span className="text-5xl font-extrabold text-white">29€<span className="text-gray-400">/mes</span></span>
-                                <span className="text-3xl font-medium text-gray-500 line-through ml-3">49€</span>
                             </p>
-                            <p className="mt-4 text-lg font-medium text-gray-400">Después: <span className="font-bold text-white">39€/mes</span> (precio normal)</p>
+                            <p className="mt-2 text-lg font-medium text-gray-400">Pagas 29€/mes de por vida mientras mantengas tu suscripción.</p>
                         </div>
                         <div className="mt-8 border-t border-gray-700 pt-6 text-center">
-                             <p className="font-semibold text-white">Total primer año:</p>
-                             <p className="mt-2 text-lg text-gray-400">€149 + (€29×3) + (€39×9) = <span className="font-bold text-2xl text-white">€586</span></p>
-                             <p className="mt-2 text-cyan-300 font-semibold">Eso son €1.6/día para no tener que gestionar DMs nunca más.</p>
+                             <p className="font-semibold text-white">Ahorro: <span className="text-green-400">240€/año</span> todos los años</p>
+                             {/* --- TEXTO MODIFICADO --- */}
+                             <p className="mt-4 text-cyan-300 font-semibold">Eso son €1.60/día (menos que un café) para no tener que gestionar DMs nunca más.</p>
                         </div>
                          <a href="#contact" className="mt-8 w-full inline-block text-center px-6 py-3 border border-transparent rounded-md shadow-lg text-base font-medium text-white bg-cyan-600 hover:bg-cyan-700">
                             Empezar ahora
@@ -266,19 +255,19 @@ const App: React.FC = () => {
             </div>
         </section>
         
-        {/* Testimonial & Ideal For Section */}
+        {/* --- SECCIÓN DE TESTIMONIOS/BENEFICIOS MODIFICADA --- */}
         <section className="py-20 sm:py-24 bg-gray-800/50">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                 <div>
-                    <h2 className="text-3xl font-extrabold text-white text-center mb-8">Por qué funciona</h2>
-                    <figure>
-                        <blockquote className="text-center text-xl font-medium text-white leading-8 bg-gray-800 p-6 rounded-lg border border-gray-700">
-                            <p>"Antes tardaba 2 horas al día respondiendo DMs. Ahora reviso el Sheets cuando quiero y solo respondo a consultas serias con presupuesto."</p>
-                        </blockquote>
-                        <figcaption className="mt-4">
-                            <div className="text-center text-base text-gray-400">— Ejemplo de caso de uso real</div>
-                        </figcaption>
-                    </figure>
+                    <h2 className="text-3xl font-extrabold text-white text-center mb-8">Lo que puedes esperar:</h2>
+                    <div className="max-w-md mx-auto">
+                        <ul role="list" className="space-y-4">
+                            <CheckListItem checkColor="text-green-400">Ahorrar 5-10 horas/semana en gestión de DMs</CheckListItem>
+                            <CheckListItem checkColor="text-green-400">Filtrar consultas serias de las que no lo son</CheckListItem>
+                            <CheckListItem checkColor="text-green-400">Tener todo organizado en un solo lugar</CheckListItem>
+                            <CheckListItem checkColor="text-green-400">Proyectar imagen más profesional</CheckListItem>
+                        </ul>
+                    </div>
                 </div>
                 <div>
                     <h2 className="text-3xl font-extrabold text-white text-center mb-8">Ideal para:</h2>
@@ -293,14 +282,15 @@ const App: React.FC = () => {
             </div>
         </section>
         
-        {/* FAQ Section */}
+        {/* --- SECCIÓN DE FAQ MODIFICADA --- */}
         <section className="py-20 sm:py-24">
             <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
                 <h2 className="text-3xl font-extrabold text-white text-center">FAQ Rápido</h2>
                 <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8">
                     <div className="bg-gray-800 p-6 rounded-lg border border-gray-700">
                         <h3 className="font-semibold text-white">¿Necesito conocimientos técnicos?</h3>
-                        <p className="mt-2 text-gray-400">No. Te lo dejo todo instalado. Solo necesitas saber abrir Google Sheets (como Excel).</p>
+                        {/* --- TEXTO MODIFICADO --- */}
+                        <p className="mt-2 text-gray-400">No. Te lo dejo todo instalado. Solo necesitas saber abrir Google Sheets.</p>
                     </div>
                     <div className="bg-gray-800 p-6 rounded-lg border border-gray-700">
                         <h3 className="font-semibold text-white">¿Funciona con Instagram?</h3>
@@ -308,7 +298,8 @@ const App: React.FC = () => {
                     </div>
                     <div className="bg-gray-800 p-6 rounded-lg border border-gray-700">
                         <h3 className="font-semibold text-white">¿Puedo cambiar las preguntas del formulario después?</h3>
-                        <p className="mt-2 text-gray-400">Sí, por supuesto. Para garantizar que el sistema siga funcionando, solo tienes que solicitar los cambios y se aplicarán sin coste adicional como parte del mantenimiento mensual incluido.</p>
+                        {/* --- TEXTO MODIFICADO --- */}
+                        <p className="mt-2 text-gray-400">Sí. Durante la instalación lo ajustamos todo. Después, tienes 1 cambio menor/mes incluido (añadir/quitar pregunta). Cambios mayores (reestructurar) se presupuestan aparte (desde 50€).</p>
                     </div>
                     <div className="bg-gray-800 p-6 rounded-lg border border-gray-700">
                         <h3 className="font-semibold text-white">¿Hay costos ocultos?</h3>
@@ -322,32 +313,29 @@ const App: React.FC = () => {
             </div>
         </section>
         
-        {/* Final CTA Section */}
+        {/* --- SECCIÓN DE CTA MODIFICADA --- */}
         <section id="contact" className="bg-cyan-800/20 py-20 sm:py-24">
-            <div className="max-w-3xl mx-auto text-center px-4 sm:px-6 lg:px-8">
+            <div className="max-w-md mx-auto text-center px-4 sm:px-6 lg:px-8">
                 <h2 className="text-3xl font-extrabold text-white tracking-tight sm:text-4xl">
                     Siguiente paso
                 </h2>
-                <p className="mt-4 text-lg text-gray-300">
-                    Te respondo en menos de 24h y empezamos.
-                </p>
-                <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
-                    <a href="https://wa.me/600204383" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-green-500 hover:bg-green-600 w-full sm:w-auto">
-                        <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 4.315 1.919 6.066l-1.472 4.244 4.352-1.141z" /></svg>
+                <div className="mt-8">
+                    <a href="https://wa.me/XXXXXXXXXXX" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center px-8 py-4 border border-transparent text-lg font-bold rounded-md text-white bg-green-500 hover:bg-green-600 w-full transform hover:scale-105 transition-transform duration-300 shadow-lg">
+                        <svg className="w-6 h-6 mr-3" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 4.315 1.919 6.066l-1.472 4.244 4.352-1.141z" /></svg>
                         Escríbeme por WhatsApp
                     </a>
-                    <a href="mailto:info@iswstudioweb.com" className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-gray-900 bg-cyan-400 hover:bg-cyan-300 w-full sm:w-auto">
-                        O envíame un email
-                    </a>
                 </div>
-                <p className="mt-6 text-sm text-cyan-200/60 font-semibold">Plazas limitadas para la oferta: Solo para los 5 primeros estudios.</p>
+                <p className="mt-4 text-sm text-gray-400">Te respondo en menos de 24h y empezamos.<br/>(Si prefieres email: info@iswstudioweb.com)</p>
+                <div className="mt-8">
+                    <p className="font-semibold text-cyan-200/80">Plazas limitadas: 5 de 5 disponibles</p>
+                    <p className="text-xs text-gray-500 mt-1">(Actualizado: 12 de octubre 2025)</p>
+                </div>
             </div>
         </section>
 
         {/* Footer */}
         <footer className="bg-gray-900 border-t border-gray-800">
             <div className="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8 text-center text-gray-500">
-                {/* Logo en el footer */}
                 <img src="/logo-isw.png" alt="ISW Studio Web Logo" className="h-10 mx-auto mb-4" />
                 <p className="font-bold text-white">ISW Studio Web</p>
                 <p className="text-sm">Setup profesional para estudios de tatuajes</p>
