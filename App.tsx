@@ -77,7 +77,7 @@ const App: React.FC = () => {
             <div className="absolute inset-0 bg-gray-900/80 backdrop-blur-sm"></div>
             <div 
                 className="absolute inset-0 bg-no-repeat bg-center bg-cover"
-                style={{backgroundImage: 'url(https://picsum.photos/1920/1080?grayscale&blur=5)', opacity: '0.1'}}
+                style={{backgroundImage: 'url(https://images.unsplash.com/photo-1554050857-c84a8abdb5e2?q=80&w=1974&auto=format&fit=crop)', opacity: '0.2'}}'}}
             ></div>
             <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
                 <h1 className="text-4xl font-extrabold tracking-tight text-white sm:text-5xl md:text-6xl">
