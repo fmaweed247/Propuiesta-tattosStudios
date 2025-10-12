@@ -9,11 +9,12 @@ import "yet-another-react-lightbox/styles.css";
 
 interface CheckListItemProps {
   children: React.ReactNode;
+  checkColor?: string;
 }
 
-const CheckListItem: React.FC<CheckListItemProps> = ({ children }) => (
+const CheckListItem: React.FC<CheckListItemProps> = ({ children, checkColor = "text-cyan-400" }) => (
   <li className="flex items-start space-x-3">
-    <svg className="flex-shrink-0 h-6 w-6 text-cyan-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+    <svg className={`flex-shrink-0 h-6 w-6 ${checkColor}`} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
     </svg>
     <span className="text-gray-300">{children}</span>
@@ -175,38 +176,74 @@ const App: React.FC = () => {
                     <ul role="list" className="space-y-4">
                         <CheckListItem>Google Sheets organizado y listo</CheckListItem>
                         <CheckListItem>Tutorial en video para que sepas usarlo</CheckListItem>
-                        <CheckListItem>2 semanas de soporte por WhatsApp</CheckListItem>
+                        <CheckListItem checkColor="text-green-400">2 semanas de soporte por WhatsApp</CheckListItem>
                     </ul>
                 </div>
                 <p className="mt-8 text-center text-lg font-semibold text-cyan-300">Todo queda en TUS cuentas. Control 100% tuyo.</p>
             </div>
         </section>
         
-        {/* Pricing Section */}
+        {/* --- SECCIÓN DE PRECIOS MODIFICADA --- */}
         <section id="pricing" className="py-20 sm:py-24 bg-gray-900">
-            <div className="max-w-lg mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="text-center">
                     <h2 className="text-base font-semibold text-cyan-400 tracking-wider uppercase">La inversión</h2>
                     <p className="mt-2 text-3xl font-extrabold text-white tracking-tight sm:text-4xl">
-                        Setup Completo
+                        Precio transparente y sin sorpresas
                     </p>
                 </div>
                 
-                <div className="mt-10 bg-gray-800 rounded-2xl border border-cyan-500/30 shadow-2xl shadow-cyan-500/10 text-center p-8">
-                    <p className="font-semibold text-cyan-300">Primeros 5 estudios:</p>
-                    <div className="mt-4 flex items-center justify-center gap-4">
-                        <span className="text-5xl font-extrabold text-white">149€</span>
-                        <span className="text-3xl font-medium text-gray-500 line-through">299€</span>
+                <div className="mt-12 grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+                    {/* Columna de Precios */}
+                    <div className="bg-gray-800 rounded-2xl border border-gray-700 p-8 space-y-8">
+                        <div>
+                            <h3 className="text-xl font-bold text-white">Setup inicial (pago único)</h3>
+                            <p className="mt-4 text-5xl font-extrabold text-white">149€</p>
+                            <p className="mt-2 text-gray-400">Incluye instalación completa, personalización y puesta en marcha.</p>
+                        </div>
+                        <div className="border-t border-gray-700 pt-8">
+                            <h3 className="text-xl font-bold text-white">Mensualidad</h3>
+                            <p className="mt-4"><span className="text-5xl font-extrabold text-white">29€</span><span className="text-gray-400">/mes</span></p>
+                            <div className="mt-4 text-left text-gray-400">
+                                <h4 className="font-semibold text-gray-200">¿Por qué mensual? Porque el sistema necesita:</h4>
+                                <ul className="mt-2 space-y-2 text-sm">
+                                    <li className="flex items-start"><span className="text-cyan-400 mr-2 mt-1">✓</span> Servidor activo 24/7 donde funcionan las automatizaciones.</li>
+                                    <li className="flex items-start"><span className="text-cyan-400 mr-2 mt-1">✓</span> Mantenimiento técnico y actualizaciones.</li>
+                                    <li className="flex items-start"><span className="text-cyan-400 mr-2 mt-1">✓</span> Backups automáticos de tu información.</li>
+                                    <li className="flex items-start"><span className="text-cyan-400 mr-2 mt-1">✓</span> Soporte técnico por WhatsApp.</li>
+                                </ul>
+                                <p className="mt-3 text-xs italic">(Si dejaras de pagar, el servidor se apaga y el sistema deja de funcionar. Por eso no puede ser pago único.)</p>
+                            </div>
+                        </div>
                     </div>
-                    <p className="mt-4 text-lg font-medium text-gray-300">Pago único. Sin mensualidades.</p>
-                    <p className="mt-2 text-sm text-gray-400">(Precio normal 299€ después de los primeros 5)</p>
-                    <a href="#contact" className="mt-8 w-full inline-block px-6 py-3 border border-transparent rounded-md shadow-lg text-base font-medium text-white bg-cyan-600 hover:bg-cyan-700 sm:w-auto">
-                        Reservar mi plaza
-                    </a>
-                    <p className="mt-6 text-xs text-gray-500">
-                        No incluye: Personalizaciones complejas, gestión de redes sociales, o desarrollo a medida.
-                    </p>
+
+                    {/* Columna de Oferta */}
+                    <div className="bg-gray-800 rounded-2xl border border-cyan-500/30 shadow-2xl shadow-cyan-500/10 p-8">
+                        <div className="text-center">
+                            <h3 className="text-xl font-bold text-green-400">🎁 Oferta de lanzamiento</h3>
+                            <p className="mt-1 text-gray-300">(primeros 5 estudios)</p>
+                        </div>
+                        <div className="mt-6 text-center">
+                            <p className="text-lg font-medium text-gray-400">Mensualidad los primeros 3 meses:</p>
+                            <p className="mt-2">
+                                <span className="text-5xl font-extrabold text-white">29€<span className="text-gray-400">/mes</span></span>
+                                <span className="text-3xl font-medium text-gray-500 line-through ml-3">49€</span>
+                            </p>
+                            <p className="mt-4 text-lg font-medium text-gray-400">Después: <span className="font-bold text-white">39€/mes</span> (precio normal)</p>
+                        </div>
+                        <div className="mt-8 border-t border-gray-700 pt-6 text-center">
+                             <p className="font-semibold text-white">Total primer año:</p>
+                             <p className="mt-2 text-lg text-gray-400">€149 + (€29×3) + (€39×9) = <span className="font-bold text-2xl text-white">€586</span></p>
+                             <p className="mt-2 text-cyan-300 font-semibold">Eso son €1.6/día para no tener que gestionar DMs nunca más.</p>
+                        </div>
+                         <a href="#contact" className="mt-8 w-full inline-block text-center px-6 py-3 border border-transparent rounded-md shadow-lg text-base font-medium text-white bg-cyan-600 hover:bg-cyan-700">
+                            Empezar ahora
+                        </a>
+                    </div>
                 </div>
+                <p className="mt-6 text-center text-xs text-gray-500">
+                    No incluye: Personalizaciones complejas, desarrollo a medida o gestión de redes sociales.
+                </p>
             </div>
         </section>
         
@@ -256,11 +293,11 @@ const App: React.FC = () => {
                     </div>
                     <div className="bg-gray-800 p-6 rounded-lg border border-gray-700">
                         <h3 className="font-semibold text-white">¿Hay costos ocultos?</h3>
-                        <p className="mt-2 text-gray-400">No. Solo pagas los 149€ una vez. Google Sheets es gratis siempre.</p>
+                        <p className="mt-2 text-gray-400">No. Solo pagas los 149€ de instalación y la mensualidad. Google Sheets es gratis siempre.</p>
                     </div>
                      <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 md:col-span-2">
                         <h3 className="font-semibold text-white">¿Qué pasa si tengo problemas?</h3>
-                        <p className="mt-2 text-gray-400">Tienes 2 semanas de soporte incluido por WhatsApp para resolver cualquier duda sobre el sistema.</p>
+                        <p className="mt-2 text-gray-400">Tienes soporte técnico incluido por WhatsApp para resolver cualquier duda sobre el sistema mientras mantengas la suscripción.</p>
                     </div>
                 </div>
             </div>
@@ -284,7 +321,7 @@ const App: React.FC = () => {
                         O envíame un email
                     </a>
                 </div>
-                <p className="mt-6 text-sm text-cyan-200/60 font-semibold">Plazas limitadas: Solo puedo atender 5 instalaciones este mes por cuestiones de tiempo.</p>
+                <p className="mt-6 text-sm text-cyan-200/60 font-semibold">Plazas limitadas para la oferta: Solo para los 5 primeros estudios.</p>
             </div>
         </section>
 
