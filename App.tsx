@@ -156,7 +156,7 @@ const App: React.FC = () => {
                                     <div className="w-3 h-3 rounded-full bg-green-500"></div>
                                 </div>
                             </div>
-                            <img src="src/form-screenshot.png" alt="Formulario web para tatuajes" className="rounded-b-lg w-full" />
+                            <img src="/form-screenshot.png" alt="Formulario web para tatuajes" className="rounded-b-lg w-full" />
                         </div>
                         <div>
                             <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-cyan-900/50 text-cyan-300 ring-1 ring-inset ring-cyan-300/20">Paso 1</span>
@@ -177,7 +177,7 @@ const App: React.FC = () => {
                                     <div className="w-3 h-3 rounded-full bg-gray-200"></div>
                                 </div>
                             </div>
-                            <img src="src/email-cliente.png" alt="Email de confirmación instantáneo" className="rounded-b-lg w-full" />
+                            <img src="/email-cliente.png" alt="Email de confirmación instantáneo" className="rounded-b-lg w-full" />
                         </div>
                         <div className="lg:order-1">
                             <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-cyan-900/50 text-cyan-300 ring-1 ring-inset ring-cyan-300/20">Paso 2</span>
@@ -192,8 +192,8 @@ const App: React.FC = () => {
                      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                         <div className="bg-gray-800 p-4 rounded-xl shadow-2xl shadow-cyan-500/10 border border-gray-700">
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                <img src="src/email-equipo-con-imagen.png" alt="Notificación con imagen de referencia" className="rounded-lg w-full border border-gray-700" />
-                                <img src="src/email-equipo-sin-imagen.png" alt="Notificación sin imagen de referencia" className="rounded-lg w-full border border-gray-700" />
+                                <img src="/email-equipo-con-imagen.png" alt="Notificación con imagen de referencia" className="rounded-lg w-full border border-gray-700" />
+                                <img src="/email-equipo-sin-imagen.png" alt="Notificación sin imagen de referencia" className="rounded-lg w-full border border-gray-700" />
                             </div>
                         </div>
                         <div>
@@ -209,10 +209,10 @@ const App: React.FC = () => {
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                         <div className="lg:order-2 bg-gray-800 p-4 rounded-xl shadow-2xl shadow-cyan-500/10 border border-gray-700">
                              <div className="grid grid-cols-1 gap-4">
-                                <img src="src/sheets-leads.png" alt="Google Sheets Leads" className="rounded-lg w-full border border-gray-700" />
+                                <img src="/sheets-leads.png" alt="Google Sheets Leads" className="rounded-lg w-full border border-gray-700" />
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                    <img src="src/sheets-metrics.png" alt="Google Sheets Metrics" className="rounded-lg w-full border border-gray-700" />
-                                    <img src="src/drive-screenshot.png" alt="Google Drive Archive" className="rounded-lg w-full border border-gray-700" />
+                                    <img src="/sheets-metrics.png" alt="Google Sheets Metrics" className="rounded-lg w-full border border-gray-700" />
+                                    <img src="/drive-screenshot.png" alt="Google Drive Archive" className="rounded-lg w-full border border-gray-700" />
                                 </div>
                             </div>
                         </div>
@@ -328,7 +328,7 @@ const App: React.FC = () => {
         {/* Footer */}
         <footer className="bg-gray-900 border-t border-gray-800">
             <div className="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8 text-center text-gray-500">
-                 <img src="src/isw-logo.png" alt="ISW Studio Web Logo" className="h-12 w-auto mx-auto mb-4" />
+                 <img src="/isw-logo.png" alt="ISW Studio Web Logo" className="h-12 w-auto mx-auto mb-4" />
                  <p>&copy; {new Date().getFullYear()} iswstudioweb.com</p>
                  <p className="mt-2">IVAN.C.G</p>
                  <a href="mailto:info@iswstudioweb.com" className="hover:text-cyan-400">info@iswstudioweb.com</a>
