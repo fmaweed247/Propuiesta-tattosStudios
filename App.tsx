@@ -67,6 +67,11 @@ const App: React.FC = () => {
   return (
     <div className="bg-gray-900 antialiased text-gray-300">
       <main>
+        {/* Logo en la cabecera */}
+        <header className="py-4 px-4 sm:px-6 lg:px-8 flex justify-center bg-gray-900">
+            <img src="/logo-isw.png" alt="ISW Studio Web Logo" className="h-12" />
+        </header>
+
         {/* Hero Section */}
         <section className="relative py-20 sm:py-32 text-center">
             <div className="absolute inset-0 bg-gray-900/80 backdrop-blur-sm"></div>
@@ -339,9 +344,11 @@ const App: React.FC = () => {
         {/* Footer */}
         <footer className="bg-gray-900 border-t border-gray-800">
             <div className="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8 text-center text-gray-500">
-                 <p className="font-bold text-white">ISW Studio Web</p>
-                 <p className="text-sm">Setup profesional para estudios de tatuajes</p>
-                 <p className="mt-4 text-xs">&copy; {new Date().getFullYear()} iswstudioweb.com</p>
+                {/* Logo en el footer */}
+                <img src="/logo-isw.png" alt="ISW Studio Web Logo" className="h-10 mx-auto mb-4" />
+                <p className="font-bold text-white">ISW Studio Web</p>
+                <p className="text-sm">Setup profesional para estudios de tatuajes</p>
+                <p className="mt-4 text-xs">&copy; {new Date().getFullYear()} iswstudioweb.com</p>
             </div>
         </footer>
       </main>
