@@ -83,7 +83,6 @@ const App: React.FC = () => {
                 }}
             ></div>
             <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-                {/* --- TITULAR MODIFICADO --- */}
                 <h1 className="text-4xl font-extrabold tracking-tight text-white sm:text-5xl md:text-6xl">
                     Deja de perder 2 horas al día con DMs. <span className="gradient-text">Automatiza tu formulario de consultas.</span>
                 </h1>
@@ -213,16 +212,30 @@ const App: React.FC = () => {
                 
                 <div className="mt-12 grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
                     {/* Columna de Precios */}
-                    <div className="bg-gray-800 rounded-2xl border border-gray-700 p-8 space-y-8 h-full flex flex-col justify-between">
+                    <div className="bg-gray-800 rounded-2xl border border-gray-700 p-8 space-y-8 h-full flex flex-col">
                         <div>
                             <h3 className="text-xl font-bold text-white">Setup inicial (pago único)</h3>
-                            <p className="mt-4 text-5xl font-extrabold text-white">149€</p>
+                            <p className="mt-4">
+                                <span className="text-5xl font-extrabold text-white">149€</span>
+                                <span className="text-3xl font-medium text-gray-500 line-through ml-3">299€</span>
+                            </p>
                             <p className="mt-2 text-gray-400">Incluye instalación completa, personalización y puesta en marcha.</p>
+                            <p className="mt-2 text-sm font-bold text-green-400">Ahorras 150€ en la instalación</p>
                         </div>
-                        <div className="border-t border-gray-700 pt-8">
+                        <div className="border-t border-gray-700 pt-8 mt-auto">
                             <h3 className="text-xl font-bold text-white">Mensualidad</h3>
                             <p className="mt-4"><span className="text-5xl font-extrabold text-white">29€</span><span className="text-gray-400">/mes</span></p>
-                            <p className="mt-2 text-gray-400">(Precio normal: 49€/mes)</p>
+                            <p className="text-sm text-gray-400">(Precio normal: 49€/mes)</p>
+                            <div className="mt-4 text-left text-gray-400">
+                                <h4 className="font-semibold text-gray-200">¿Por qué mensual? Porque el sistema necesita:</h4>
+                                <ul className="mt-2 space-y-2 text-sm">
+                                    <CheckListItem checkColor="text-cyan-400">Servidor activo 24/7 para las automatizaciones.</CheckListItem>
+                                    <CheckListItem checkColor="text-cyan-400">Mantenimiento técnico y actualizaciones.</CheckListItem>
+                                    <CheckListItem checkColor="text-cyan-400">Backups automáticos de tu información.</CheckListItem>
+                                    <CheckListItem checkColor="text-cyan-400">Soporte técnico por WhatsApp.</CheckListItem>
+                                </ul>
+                                <p className="mt-3 text-xs italic">(Si dejas de pagar, el servidor se apaga y el sistema deja de funcionar.)</p>
+                            </div>
                         </div>
                     </div>
 
@@ -233,16 +246,23 @@ const App: React.FC = () => {
                             <p className="mt-1 text-gray-300">(primeros 5 estudios)</p>
                         </div>
                         <div className="mt-6 text-center">
-                            <p className="text-lg font-medium text-gray-400">Consigue un descuento PERMANENTE:</p>
-                            <p className="mt-2">
-                                <span className="text-5xl font-extrabold text-white">29€<span className="text-gray-400">/mes</span></span>
-                            </p>
-                            <p className="mt-2 text-lg font-medium text-gray-400">Pagas 29€/mes de por vida mientras mantengas tu suscripción.</p>
+                            <p className="text-lg font-medium text-gray-300">Consigue un <span className="font-bold">DOBLE descuento PERMANENTE</span>:</p>
+                            <div className="mt-4 space-y-2">
+                                <p><span className="font-semibold text-gray-200">Setup:</span> <span className="text-gray-500 line-through">299€</span> <span className="text-white font-bold">149€</span> (50% OFF)</p>
+                                <p><span className="font-semibold text-gray-200">Mensualidad:</span> <span className="text-gray-500 line-through">49€</span> <span className="text-white font-bold">29€/mes de por vida</span></p>
+                            </div>
                         </div>
-                        <div className="mt-8 border-t border-gray-700 pt-6 text-center">
-                             <p className="font-semibold text-white">Ahorro: <span className="text-green-400">240€/año</span> todos los años</p>
-                             {/* --- TEXTO MODIFICADO --- */}
-                             <p className="mt-4 text-cyan-300 font-semibold">Eso son €1.60/día (menos que un café) para no tener que gestionar DMs nunca más.</p>
+                        <div className="mt-8 border-t border-gray-700 pt-6">
+                             <h4 className="font-semibold text-white text-center text-lg">💰 Ahorro total:</h4>
+                             <div className="mt-4 text-sm space-y-2 text-gray-400">
+                                 <p><strong className="text-gray-200">Primer año:</strong> <span className="text-green-400 font-bold">390€</span> (<span className="text-white">150€</span> setup + <span className="text-white">240€</span> mensualidades)</p>
+                                 <p><strong className="text-gray-200">Cada año siguiente:</strong> Ahorro permanente de <span className="text-green-400 font-bold">240€/año</span></p>
+                             </div>
+                        </div>
+                        <div className="mt-6 border-t border-gray-700 pt-6">
+                            <p className="font-semibold text-white text-center">Total a pagar (primer año):</p>
+                             <p className="mt-2 text-center text-lg text-gray-400">€149 + (€29 × 12) = <span className="font-bold text-2xl text-white">€497</span></p>
+                             <p className="mt-2 text-center text-cyan-300 font-semibold">Eso son €1.36/día (menos que un café) para no tener que gestionar DMs nunca más.</p>
                         </div>
                          <a href="#contact" className="mt-8 w-full inline-block text-center px-6 py-3 border border-transparent rounded-md shadow-lg text-base font-medium text-white bg-cyan-600 hover:bg-cyan-700">
                             Empezar ahora
@@ -250,12 +270,11 @@ const App: React.FC = () => {
                     </div>
                 </div>
                 <p className="mt-6 text-center text-xs text-gray-500">
-                    No incluye: Personalizaciones complejas, desarrollo a medida o gestión de redes sociales.
+                    No incluye: Personalizaciones complejas fuera del paquete estándar, desarrollo a medida o gestión de redes sociales.
                 </p>
             </div>
         </section>
         
-        {/* --- SECCIÓN DE TESTIMONIOS/BENEFICIOS MODIFICADA --- */}
         <section className="py-20 sm:py-24 bg-gray-800/50">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                 <div>
@@ -282,14 +301,12 @@ const App: React.FC = () => {
             </div>
         </section>
         
-        {/* --- SECCIÓN DE FAQ MODIFICADA --- */}
         <section className="py-20 sm:py-24">
             <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
                 <h2 className="text-3xl font-extrabold text-white text-center">FAQ Rápido</h2>
                 <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8">
                     <div className="bg-gray-800 p-6 rounded-lg border border-gray-700">
                         <h3 className="font-semibold text-white">¿Necesito conocimientos técnicos?</h3>
-                        {/* --- TEXTO MODIFICADO --- */}
                         <p className="mt-2 text-gray-400">No. Te lo dejo todo instalado. Solo necesitas saber abrir Google Sheets.</p>
                     </div>
                     <div className="bg-gray-800 p-6 rounded-lg border border-gray-700">
@@ -298,8 +315,7 @@ const App: React.FC = () => {
                     </div>
                     <div className="bg-gray-800 p-6 rounded-lg border border-gray-700">
                         <h3 className="font-semibold text-white">¿Puedo cambiar las preguntas del formulario después?</h3>
-                        {/* --- TEXTO MODIFICADO --- */}
-                        <p className="mt-2 text-gray-400">Sí. Durante la instalación lo ajustamos todo. Después, tienes 1 cambio menor/mes incluido (añadir/quitar pregunta). Cambios mayores (reestructurar) se presupuestan aparte (desde 50€).</p>
+                        <p className="mt-2 text-gray-400">Sí. Durante la instalación inicial lo ajustamos todo. Después, tienes 1 cambio menor/mes incluido (añadir/quitar pregunta). Cambios mayores (reestructurar) se presupuestan aparte (desde 50€).</p>
                     </div>
                     <div className="bg-gray-800 p-6 rounded-lg border border-gray-700">
                         <h3 className="font-semibold text-white">¿Hay costos ocultos?</h3>
@@ -313,14 +329,13 @@ const App: React.FC = () => {
             </div>
         </section>
         
-        {/* --- SECCIÓN DE CTA MODIFICADA --- */}
         <section id="contact" className="bg-cyan-800/20 py-20 sm:py-24">
             <div className="max-w-md mx-auto text-center px-4 sm:px-6 lg:px-8">
                 <h2 className="text-3xl font-extrabold text-white tracking-tight sm:text-4xl">
                     Siguiente paso
                 </h2>
                 <div className="mt-8">
-                    <a href="https://wa.me/XXXXXXXXXXX" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center px-8 py-4 border border-transparent text-lg font-bold rounded-md text-white bg-green-500 hover:bg-green-600 w-full transform hover:scale-105 transition-transform duration-300 shadow-lg">
+                    <a href="https://wa.me/600204383" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center px-8 py-4 border border-transparent text-lg font-bold rounded-md text-white bg-green-500 hover:bg-green-600 w-full transform hover:scale-105 transition-transform duration-300 shadow-lg">
                         <svg className="w-6 h-6 mr-3" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 4.315 1.919 6.066l-1.472 4.244 4.352-1.141z" /></svg>
                         Escríbeme por WhatsApp
                     </a>
